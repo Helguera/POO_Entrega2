@@ -7,12 +7,29 @@ package uva.poo.entrega2;
  * @author javhelg
  *
  */
-public class Producto {
+public class Producto implements Vendible {
 
 	private String nombre;
 	private String UPC;
 	private double pvp = 0;
+	private boolean vendible = false;
 
+	
+	
+	public void setVendible(){
+		vendible = true;
+	}
+	
+	public void setNoVendible(){
+		vendible = false;
+	}
+	
+	public boolean getVendible(){
+		return vendible;
+	}
+	
+	
+	
 	/**
 	 * 
 	 * @param code:
