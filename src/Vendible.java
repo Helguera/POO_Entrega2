@@ -1,4 +1,6 @@
 package uva.poo.entrega2;
+
+
 /**
  * 
  * @author alvvela
@@ -6,8 +8,18 @@ package uva.poo.entrega2;
  *
  */
 public interface Vendible {
-	boolean vendible = false;
+	
 	boolean getVendible();
+
 	void setVendible();
+
 	void setNoVendible();
+
+	String getNombre();
+
+	double getPVP();
+
+	String getIdentificador();
+	
+	
 }

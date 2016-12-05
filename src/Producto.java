@@ -9,27 +9,62 @@ package uva.poo.entrega2;
  */
 public class Producto implements Vendible {
 
+	
+	 // IMPLEMENTADO DEBIDO A VENDIBLE
+	
+	 /**
+	  * 
+	  * Establece el producto como vendible.
+	  */
+	public void setVendible(){
+		vendible = true;
+	}
+	
+	/**
+	 * Establece el producto como no vendible.
+	 */
+	public void setNoVendible(){
+		vendible = false;
+	}	
+	
+	/**
+	 * [boolean] Devuelve el estado del producto.
+	 */
+	public boolean getVendible(){
+		return vendible;
+	}
+	
+	/**
+	 * 
+	 * @return [String] Product name.
+	 */
+	public String getNombre() {
+		return nombre;
+	}
+	
+	/**
+	 * 
+	 * @return [double] Product price
+	 */
+	public double getPVP() {
+		return pvp;
+	}
+	
+	/**
+	 * 
+	 * @return [String] UPC product code
+	 */
+	public String getIdentificador() {
+		return UPC;
+	}
+	
+	 // PROPIO DE PRODUCTO
+	
 	private String nombre;
 	private String UPC;
 	private double pvp = 0;
 	private boolean vendible = false;
 
-	
-	
-	public void setVendible(){
-		vendible = true;
-	}
-	
-	public void setNoVendible(){
-		vendible = false;
-	}
-	
-	public boolean getVendible(){
-		return vendible;
-	}
-	
-	
-	
 	/**
 	 * 
 	 * @param code:
@@ -55,27 +90,28 @@ public class Producto implements Vendible {
 			throw new IllegalArgumentException("El precio no puede ser negativo.");
 		}
 
-		this.UPC = setUPC(code);
+		setIdentificador(code);
 		this.nombre = nombre;
 		this.pvp = pvp;
 	}
 
 	/**
-	 * Implementation of the UPC code. Private because nobodies can change UPC.
+	 * Function checks and sets UPC code.
 	 * 
 	 * @param code
-	 *            [String] UPC code.
+	 *            Necessary to calculate UPC code.
+	 * @return UPC code.
 	 * @throws IllegalArgumentException
-	 *             Code must be 11 digits.
-	 * 		 	   Code must be all numbers
+	 *             Code must be 12 digits and numbers.
+	 * 		 
 	 * 				
 	 */
-	private String setUPC(String code) throws IllegalArgumentException {
+	private void setIdentificador(String code) throws IllegalArgumentException {
 
-		if (code.length() != 11) {
-			throw new IllegalArgumentException("El codigo debe ser de 11 digitos.");
+		if (code.length() != 12) {
+			throw new IllegalArgumentException("El codigo debe ser de 12 digitos.");
 		}
-		for(int i=0;i<11;i++){
+		for(int i=0;i<12;i++){
 			if(code.charAt(i)<48 || code.charAt(i)>57){
 				throw new IllegalArgumentException("El codigo tiene que ser numeros.");
 			}
@@ -89,16 +125,12 @@ public class Producto implements Vendible {
 		int m = ((last_digito / 10) + 1) * 10;
 		last_digito = m - last_digito;
 		strUPC = strUPC + Integer.toString(last_digito);
-		return strUPC;
+		if (last_digito!=(strUPC.charAt(11)-48)){
+			throw new IllegalArgumentException("El codigo UPC es incorrecto");
+		} else { UPC = strUPC; }
 	}
 
-	/**
-	 * 
-	 * @return [String] UPC product code
-	 */
-	public String getUPC() {
-		return UPC;
-	}
+
 
 	/**
 	 * 
@@ -114,22 +146,6 @@ public class Producto implements Vendible {
 			throw new IllegalArgumentException("El precio no puede ser negativo.");
 		}
 		this.pvp = pvp;
-	}
-
-	/**
-	 * 
-	 * @return [double] Product price
-	 */
-	public double getPVP() {
-		return pvp;
-	}
-
-	/**
-	 * 
-	 * @return [String] Product name.
-	 */
-	public String getNombre() {
-		return nombre;
 	}
 
 }

@@ -1,4 +1,5 @@
 package uva.poo.entrega2;
+
 import java.util.ArrayList;
 
 /**
@@ -9,62 +10,86 @@ import java.util.ArrayList;
  */
 public class Pack implements Vendible {
 
+	// IMPLEMENTADO DEBIDO A VENDIBLE
 
-	private boolean vendible = false;
-	public void setNoVendible(){
+	public void setNoVendible() {
 		vendible = false;
 	}
-	public void setVendible(){
+
+	public void setVendible() {
 		vendible = true;
 	}
-	public boolean getVendible(){
+
+	public boolean getVendible() {
 		return vendible;
 	}
 
-	private ArrayList<Producto> pack;
-	private String name; 
-	
-	
-	public void Pack(String pack_name){
-		name = pack_name;
-	}
-	
-	public String getNombrePack(){
+	public String getNombre() {
 		return name;
 	}
-	
-	protected void setProductoEnPack(Producto p){
-		pack.add(p);
-		if (pack.size()<2) setNoVendible(); else  setVendible();
+
+	public double getPVP() {
+		double precio = 0;
+		for (int p = 0; p < pack.size(); p++) {
+			precio += pack.get(p).getPVP();
+		}
+		return (precio * 0.8);
 	}
-		
-	public  String getProductosDelPack(){
+
+	public String getIdentificador() {
+		return IDdelPack;
+	}
+
+	// PROPIO DEL PACK
+
+	private ArrayList<Producto> pack;
+	private String name;
+	private String IDdelPack;
+	private boolean vendible = false;
+
+	public Pack(String pack_name, String identificador) {
+		name = pack_name;
+		IDdelPack = identificador;
+	}
+
+	protected void add(Producto p) throws IllegalArgumentException {
+		if (pack.contains(p))
+			throw new IllegalArgumentException("Inserte un nombre para el producto.");
+		else
+			pack.add(p);
+		if (pack.size() < 2)
+			setNoVendible();
+		else
+			setVendible();
+	}
+
+	public String getProductosDelPack() {
 		String prod2str = "";
-		for (int p=0; p<pack.size(); p++){
+		for (int p = 0; p < pack.size(); p++) {
 			prod2str += pack.get(p).getNombre() + " ";
 		}
 		return prod2str;
 	}
 
-	public int getNumeroProductosPack(){
+	public int size() {
 		return pack.size();
 	}
-	
-	public double getPrecio(){
-		double precio=0;
-		for (int p=0; p<pack.size(); p++){
-			precio += pack.get(p).getPVP();
-		}
-		return (precio*0.8);
-	}
-	
-	public boolean contains(Producto producto){
-		for (int p=0; p<pack.size(); p++){
-			if (producto.equals(p))	return true;
+
+	public boolean contains(Producto producto) {
+		// for (int p=0; p<pack.size(); p++){
+		for (Producto p : pack) {
+			if (producto.equals(p))
+				return true;
 		}
 		return false;
 	}
-	
-	
-	
+
+	public void remove(Producto producto){
+		if (contains(producto)){
+			for (int i=0; i<pack.size(); i++){
+				if (producto.equals(pack.get(i)))
+					pack.remove(i);
+			}
+		}
+	}
 }
