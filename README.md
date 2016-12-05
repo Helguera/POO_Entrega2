@@ -12,6 +12,7 @@ A la hora de implementarlo en un futuro de forma física, la máquina utilizarí
 ## Producto:
 Igual que la práctica anterior.
 Ahora implementa la interfaz Vendible.
+
 **De la interfaz *Vendible*:**
 - [x] getVendible.
 - [x] setVendible.
@@ -27,6 +28,7 @@ Implementa la interfaz *Vendible*.
 - [x] No puede haber dos productos iguales.
 - [x] El precio del pack tiene un 20% de descuento.
 - [x] Identificador del pack.
+
 **Del pack:**
 - [x] *setIdentificador()*
 - [x] *size()*: Número de productos que contiene el pack.
