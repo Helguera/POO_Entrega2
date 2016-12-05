@@ -4,9 +4,11 @@ En esta ocasión hay que implementar una clase *Pack* que utilizará productos, 
 Hay que utilizar una abstracción de ambas, llamada *Vendible*.
 Hemos utilizado *Vendible* como interfaz, asi aseguramos que Productos y Packs tengan ciertos métodos en común y desarrollar el polimorfismo.
 A la hora de implementarlo en un futuro de forma física, la máquina utilizaría las clases Pack y Producto, pero como son clases diferentes, en la extracción del ArrayList, utilizarían la interfaz Vendible, es decir, llenan un ArrayList con packs y productos, pero los extraen como Vendibles.
-- [] Preguntar si esto está bien.
-- [] Preguntar si estructura de Vendible es válida.
-- [] Preguntar si hay que hacer **JUnit** de *Vendible*, y en él introducir el cambio de tipo [Producto, Pack] -> Vendible.
+- [ ] Preguntar si esto está bien.
+- [ ] Preguntar si estructura de Vendible es válida.
+- [ ] Preguntar si hay que hacer **JUnit** de *Vendible*, y en él introducir el cambio de tipo [Producto, Pack] -> Vendible.
+
+
 ## Producto:
 Igual que la práctica anterior.
 Ahora implementa la interfaz Vendible.
