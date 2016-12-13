@@ -8,60 +8,42 @@ import java.util.ArrayList;
  * @author javhelg
  *
  */
-public class Pack implements Vendible {
-
-	// IMPLEMENTADO DEBIDO A VENDIBLE
-
-	public void setNoVendible() {
-		vendible = false;
-	}
-
-	public void setVendible() {
-		vendible = true;
-	}
-
-	public boolean getVendible() {
-		return vendible;
-	}
-
-	public String getNombre() {
-		return name;
-	}
+public class Pack extends Vendible {
 
 	public double getPVP() {
 		double precio = 0;
-		for (int p = 0; p < pack.size(); p++) {
-			precio += pack.get(p).getPVP();
-		}
-		return (precio * 0.8);
-	}
-
-	public String getIdentificador() {
-		return IDdelPack;
+		for (Producto p: pack) {
+			precio += p.getPVP();
+		};
+		int p = (int) (precio*100*0.8);
+		return precio = (double) p/100;
 	}
 
 	// PROPIO DEL PACK
 
 	private ArrayList<Producto> pack = new ArrayList<Producto>();
-	private String name;
-	private String IDdelPack;
-	private boolean vendible = false;
-
-	public Pack(String pack_name, String identificador) {
-		name = pack_name;
-		IDdelPack = identificador;
+	
+	public Pack(String pack_name, String identificador, Producto[] lista_pack) {
+		nombre = pack_name;
+		this.identificador = identificador;
+		if (lista_pack.length>2){
+			add(lista_pack);
+		}
+	}
+	
+	public void add (Producto[] p ){
+		for (Producto prd: p){
+			add(prd);
+		}
+	}
+	
+	
+	
+	public void add (Producto p)throws IllegalArgumentException {
+		if (pack.contains(p)) throw new IllegalArgumentException("Hay productos repetidos en el pack.");
+		pack.add(p);
 	}
 
-	protected void add(Producto p) throws IllegalArgumentException {
-		if (pack.contains(p))
-			throw new IllegalArgumentException("Inserte un nombre para el producto.");
-		else
-			pack.add(p);
-		if (pack.size() < 2)
-			setNoVendible();
-		else
-			setVendible();
-	}
 
 	public String getProductosDelPack() {
 		String prod2str = "";
@@ -84,12 +66,13 @@ public class Pack implements Vendible {
 		return false;
 	}
 
-	public void remove(Producto producto){
+	public void remove(Producto producto)throws IllegalArgumentException {
 		if (contains(producto)){
 			for (int i=0; i<pack.size(); i++){
 				if (producto.equals(pack.get(i)))
 					pack.remove(i);
 			}
 		}
+		if (pack.size()<3) throw new IllegalArgumentException("Asegurese de que el pack tenga siempre 3 o mas productos.");
 	}
 }

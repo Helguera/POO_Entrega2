@@ -7,19 +7,21 @@ package uva.poo.entrega2;
  * @author javhelg
  *
  */
-public interface Vendible {
+public abstract class Vendible {
+	String identificador;
+	String nombre;
 	
-	boolean getVendible();
+	String getNombre(){
+		return nombre;
+	}
+	
+	String getIdentificador(){
+		return identificador;
+	}
+	
+	abstract double getPVP();
 
-	void setVendible();
 
-	void setNoVendible();
-
-	String getNombre();
-
-	double getPVP();
-
-	String getIdentificador();
 	
 	
 }

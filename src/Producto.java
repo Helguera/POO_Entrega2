@@ -7,40 +7,10 @@ package uva.poo.entrega2;
  * @author javhelg
  *
  */
-public class Producto implements Vendible {
+public class Producto extends Vendible {
 
 	
 	 // IMPLEMENTADO DEBIDO A VENDIBLE
-	
-	 /**
-	  * 
-	  * Establece el producto como vendible.
-	  */
-	public void setVendible(){
-		vendible = true;
-	}
-	
-	/**
-	 * Establece el producto como no vendible.
-	 */
-	public void setNoVendible(){
-		vendible = false;
-	}	
-	
-	/**
-	 * [boolean] Devuelve el estado del producto.
-	 */
-	public boolean getVendible(){
-		return vendible;
-	}
-	
-	/**
-	 * 
-	 * @return [String] Product name.
-	 */
-	public String getNombre() {
-		return nombre;
-	}
 	
 	/**
 	 * 
@@ -54,16 +24,10 @@ public class Producto implements Vendible {
 	 * 
 	 * @return [String] UPC product code
 	 */
-	public String getIdentificador() {
-		return UPC;
-	}
 	
 	 // PROPIO DE PRODUCTO
 	
-	private String nombre;
-	private String UPC;
 	private double pvp = 0;
-	private boolean vendible = false;
 
 	/**
 	 * 
@@ -127,10 +91,8 @@ public class Producto implements Vendible {
 		//strUPC = strUPC + Integer.toString(last_digito);
 		if (last_digito!=(strUPC.charAt(11)-48)){
 			throw new IllegalArgumentException("El codigo UPC es incorrecto");
-		} else { UPC = strUPC; }
+		} else { identificador = strUPC; }
 	}
-
-
 
 	/**
 	 * 
