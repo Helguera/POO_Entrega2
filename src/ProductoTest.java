@@ -14,8 +14,8 @@ public class ProductoTest {
 	
 	@Test
 	public void testInicializacionArgumentoValido() {
-		Producto p = new Producto ("66666666666", "Lays", 0);
-		assertEquals(p.getUPC(), "666666666662");
+		Producto p = new Producto ("666666666662", "Lays", 0);
+		assertEquals(p.getIdentificador(), "666666666662");
 		assertEquals(p.getNombre(), "Lays");
 		assertEquals(p.getPVP(), 0, 0.001);
 	}

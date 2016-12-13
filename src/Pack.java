@@ -42,7 +42,7 @@ public class Pack implements Vendible {
 
 	// PROPIO DEL PACK
 
-	private ArrayList<Producto> pack;
+	private ArrayList<Producto> pack = new ArrayList<Producto>();
 	private String name;
 	private String IDdelPack;
 	private boolean vendible = false;

@@ -83,8 +83,8 @@ public class Producto implements Vendible {
 		if (nombre.length() == 0) {
 			throw new IllegalArgumentException("Inserte un nombre para el producto.");
 		}
-		if (code.length() != 11) {
-			throw new IllegalArgumentException("El codigo debe ser de 11 digitos.");
+		if (code.length() != 12) {
+			throw new IllegalArgumentException("El codigo debe ser de 12 digitos.");
 		}
 		if (pvp < 0) {
 			throw new IllegalArgumentException("El precio no puede ser negativo.");
@@ -124,7 +124,7 @@ public class Producto implements Vendible {
 				+ (strUPC.charAt(9) - 48) + ((strUPC.charAt(10) - 48) * 3);
 		int m = ((last_digito / 10) + 1) * 10;
 		last_digito = m - last_digito;
-		strUPC = strUPC + Integer.toString(last_digito);
+		//strUPC = strUPC + Integer.toString(last_digito);
 		if (last_digito!=(strUPC.charAt(11)-48)){
 			throw new IllegalArgumentException("El codigo UPC es incorrecto");
 		} else { UPC = strUPC; }
