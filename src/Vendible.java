@@ -10,6 +10,7 @@ package uva.poo.entrega2;
 public abstract class Vendible {
 	String identificador;
 	String nombre;
+	double getPVP;
 	
 	String getNombre(){
 		return nombre;

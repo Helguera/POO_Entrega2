@@ -15,13 +15,17 @@ public class Claseprueba {
 		
 		ArrayList<Vendible> maq = new ArrayList<Vendible>();
 		maq.add(pack1);
-		maq.add(pro1);
-		maq.add(pro2);
-		maq.add(pro3);
 		
-		pack1.add(pro4);
-		pack1.remove(pro3);
+		for (Vendible v: maq){
+			System.out.println("Nombre: " + v.getNombre() + "\tPrecio: " + v.getPVP() + " €\tIdentificador: " + v.getIdentificador());
+		}
 		
+		
+		/**
+		 * Probamos si cambia el preciod el pack al cambiar
+		 * el precio de un producto de su interior.
+		 */
+		pro3.setPVP(0.25);
 		for (Vendible v: maq){
 			System.out.println("Nombre: " + v.getNombre() + "\tPrecio: " + v.getPVP() + " €\tIdentificador: " + v.getIdentificador());
 		}

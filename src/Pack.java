@@ -1,7 +1,5 @@
 package uva.poo.entrega2;
-
 import java.util.ArrayList;
-
 /**
  * 
  * @author alvvela
@@ -10,6 +8,14 @@ import java.util.ArrayList;
  */
 public class Pack extends Vendible {
 
+	private ArrayList<Producto> pack = new ArrayList<Producto>();
+	
+	// IMPLEMENTADO DEBIDO A VENDIBLE
+	
+	/**
+	 * @return <double> precio.
+	 */
+	@Override
 	public double getPVP() {
 		double precio = 0;
 		for (Producto p: pack) {
@@ -20,31 +26,50 @@ public class Pack extends Vendible {
 	}
 
 	// PROPIO DEL PACK
-
-	private ArrayList<Producto> pack = new ArrayList<Producto>();
 	
-	public Pack(String pack_name, String identificador, Producto[] lista_pack) {
-		nombre = pack_name;
+	/**
+	 * 
+	 * @param name:
+	 * 				<String> Pack name.
+	 * @param identificador:
+	 * 				<String> Pack identification.
+	 * @param lista_pack:
+	 * 				<Producto[]> Pack initial product.
+	 */
+	public Pack(String name, String identificador, Producto[] lista_pack) throws IllegalArgumentException {
+		if (lista_pack.length<2) throw new IllegalArgumentException ("El pack debe tener 2 o mas productos.\n");
+		add(lista_pack);
+		nombre = name;
 		this.identificador = identificador;
-		if (lista_pack.length>2){
-			add(lista_pack);
-		}
 	}
 	
+	/**
+	 * 
+	 * @param p:
+	 * 			<Producto[]> Product list to add.
+	 */
 	public void add (Producto[] p ){
 		for (Producto prd: p){
 			add(prd);
 		}
-	}
+	}	
 	
-	
-	
+	/**
+	 * 
+	 * @param p:
+	 * 			<Producto> Product to add at pack. 
+	 * @throws IllegalArgumentException
+	 * 			The product p can not be two times in the pack.
+	 */
 	public void add (Producto p)throws IllegalArgumentException {
 		if (pack.contains(p)) throw new IllegalArgumentException("Hay productos repetidos en el pack.");
-		pack.add(p);
+		else pack.add(p);
 	}
 
-
+	/**
+	 * 
+	 * @return <String> Pack products list.
+	 */
 	public String getProductosDelPack() {
 		String prod2str = "";
 		for (int p = 0; p < pack.size(); p++) {
@@ -52,11 +77,21 @@ public class Pack extends Vendible {
 		}
 		return prod2str;
 	}
-
+	
+	/**
+	 * 
+	 * @return <int> Pack size.
+	 */
 	public int size() {
 		return pack.size();
 	}
 
+	/**
+	 * 
+	 * @param producto:
+	 * 				<Producto> Product that we want to know if is in the pack.
+	 * @return <boolean> True = producto is in the pack.
+	 */
 	public boolean contains(Producto producto) {
 		// for (int p=0; p<pack.size(); p++){
 		for (Producto p : pack) {
@@ -66,6 +101,14 @@ public class Pack extends Vendible {
 		return false;
 	}
 
+	/**
+	 *  
+	 * @param producto:
+	 * 				<Producto> Product to remove.
+	 * @throws IllegalArgumentException
+	 * 				Pack must be 2 or more products.
+	 * 
+	 */
 	public void remove(Producto producto)throws IllegalArgumentException {
 		if (contains(producto)){
 			for (int i=0; i<pack.size(); i++){
@@ -73,6 +116,6 @@ public class Pack extends Vendible {
 					pack.remove(i);
 			}
 		}
-		if (pack.size()<3) throw new IllegalArgumentException("Asegurese de que el pack tenga siempre 3 o mas productos.");
+		if (pack.size()<2) throw new IllegalArgumentException("Asegurese de que el pack tenga siempre 2 o mas productos.");
 	}
 }
