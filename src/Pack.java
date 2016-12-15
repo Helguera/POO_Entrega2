@@ -8,12 +8,13 @@ import java.util.ArrayList;
  */
 public class Pack extends Vendible {
 
+	public static int id_pack=42;
 	private ArrayList<Producto> pack = new ArrayList<Producto>();
 	
 	// IMPLEMENTADO DEBIDO A VENDIBLE
 	
 	/**
-	 * @return <double> precio.
+	 * @return <double> price.
 	 */
 	@Override
 	public double getPVP() {
@@ -36,11 +37,11 @@ public class Pack extends Vendible {
 	 * @param lista_pack:
 	 * 				<Producto[]> Pack initial product.
 	 */
-	public Pack(String name, String identificador, Producto[] lista_pack) throws IllegalArgumentException {
+	public Pack(String name, Producto[] lista_pack) throws IllegalArgumentException {
 		if (lista_pack.length<2) throw new IllegalArgumentException ("El pack debe tener 2 o mas productos.\n");
 		add(lista_pack);
 		nombre = name;
-		this.identificador = identificador;
+		setIdentificador();
 	}
 	
 	/**
@@ -117,5 +118,13 @@ public class Pack extends Vendible {
 			}
 		}
 		if (pack.size()<2) throw new IllegalArgumentException("Asegurese de que el pack tenga siempre 2 o mas productos.");
+	}
+
+	/**
+	 * Set the product ID.
+	 */
+	private void setIdentificador(){
+		identificador=Integer.toString(id_pack);
+		id_pack++;
 	}
 }

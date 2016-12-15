@@ -20,13 +20,13 @@ Implementa la clase abstracta *Vendible*.
 - [x] Utiliza la clase _Producto_, y está compuesto por un array de Producto, que para ser vendible tiene que haber más de 2.
 - [x] No puede haber dos productos iguales en el mismo pack.
 - [x] El precio del pack tiene un 20% de descuento.
-- [ ] Identificador del pack: Definir como crearlo.
+- [x] Identificador del pack: Definir como crearlo.
 - [x] Minimo 2 productos.
 - [x] Si el precio de un producto cambia, el del pack también.
-- [ ] No se puede hacer un pack de packs.
+- [x] No se puede hacer un pack de packs.
 
 **Del pack:**
-- [ ] *setIdentificador()*
+- [x] *setIdentificador()*
 - [x] *size()*: Número de productos que contiene el pack.
 - [x] *getProductosDelPack()*: Qué productos hay en el pack.
 - [x] *contains()*: Ver si el pack contiene un determinado producto. <boolean>

@@ -12,17 +12,26 @@ public abstract class Vendible {
 	String nombre;
 	double getPVP;
 	
+	/**
+	 * 
+	 * @return <String> Name
+	 */
 	String getNombre(){
 		return nombre;
 	}
 	
+	/**
+	 * 
+	 * @return <String> ID
+	 */
 	String getIdentificador(){
 		return identificador;
 	}
 	
+	/**
+	 * 
+	 * @return <double> Price
+	 */
 	abstract double getPVP();
 
-
-	
-	
 }
