@@ -1,7 +1,7 @@
 package uva.poo.entrega2;
 import java.util.ArrayList;
 /**
- * 
+ *
  * @author alvvela
  * @author javhelg
  *

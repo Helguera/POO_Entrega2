@@ -8,9 +8,9 @@ package uva.poo.entrega2;
  *
  */
 public abstract class Vendible {
-	String identificador;
-	String nombre;
-	double getPVP;
+	protected String identificador;
+	protected String nombre;
+	protected double getPVP;
 	
 	/**
 	 * 
