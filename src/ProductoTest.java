@@ -11,7 +11,8 @@ import org.junit.Test;
  *
  */
 public class ProductoTest {
-	// INICIALIZACIÓN VALIDA
+	
+	/* --------- INICIALIZACIÓN VALIDA -------------*/
 	
 	@Test
 	public void testInicializacionArgumentoValido() {
@@ -22,6 +23,7 @@ public class ProductoTest {
 	}
 	
 	/*---------- INICIALIZACION NO VALIDA ---------- */
+	
 	// Por el codigo UPC:
 	
 	@Test (expected = IllegalArgumentException.class)
@@ -45,25 +47,33 @@ public class ProductoTest {
 	}
 	
 	// Por el nombre
+	
 	@Test (expected = IllegalArgumentException.class)
 	public void testInicializacioNoValido_NombreVacio(){
 		Producto p = new Producto ("666666666662", "", 0.35);
 	}
 
 	// Por el precio:
+	
 	@Test (expected = IllegalArgumentException.class)
 	public void testInicializacioNoValido_PrecioNegativo(){
 		Producto p = new Producto ("666666666662", "Kalise", -0.01);
 	}
 	
-	/* ------------ NO VALIDO: setPVP() --------------*/
+	/* ------------ setPVP() --------------*/
 	
+	// NO VALIDO
 	@Test (expected = IllegalArgumentException.class)
 	public void test_setPVP_NoValido_PrecioNegativo(){
 		Producto p = new Producto ("666666666662", "Kalise", 0);
 		p.setPVP(-0.01);
 	}
 	
+	// VALIDO
+	public void test_setPVP_Valido_PrecioNegativo(){
+		Producto p = new Producto ("666666666662", "Kalise", 0);
+		p.setPVP(0.01);
+	}
 	
-
+	
 }

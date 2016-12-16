@@ -8,10 +8,10 @@ import java.util.ArrayList;
  */
 public class Pack extends Vendible {
 
-	public static int id_pack=42;
+	public static int id_pack=42; // Pack ID starts at 42.
 	private ArrayList<Producto> pack = new ArrayList<Producto>();
 	
-	// IMPLEMENTADO DEBIDO A VENDIBLE
+	// IMPLEMENTADO DEBIDO A VENDIBLE.
 	
 	/**
 	 * @return <double> price.
@@ -39,6 +39,7 @@ public class Pack extends Vendible {
 	 */
 	public Pack(String name, Producto[] lista_pack) throws IllegalArgumentException {
 		if (lista_pack.length<2) throw new IllegalArgumentException ("El pack debe tener 2 o mas productos.\n");
+		if (name.length() == 0) throw new IllegalArgumentException ("El pack debe tener un nombre");
 		add(lista_pack);
 		nombre = name;
 		setIdentificador();
@@ -49,7 +50,8 @@ public class Pack extends Vendible {
 	 * @param p:
 	 * 			<Producto[]> Product list to add.
 	 */
-	public void add (Producto[] p ){
+	public void add (Producto[] p ) throws IllegalArgumentException{
+		if (p.length == 0) throw new IllegalArgumentException("No se ha añadido ningun producto.");
 		for (Producto prd: p){
 			add(prd);
 		}
@@ -74,11 +76,12 @@ public class Pack extends Vendible {
 	public String getProductosDelPack() {
 		String prod2str = "";
 		for (int p = 0; p < pack.size(); p++) {
-			prod2str += pack.get(p).getNombre() + " ";
+			if (p != pack.size()-1) prod2str += pack.get(p).getNombre() + " + ";
+			else prod2str += pack.get(p).getNombre() + ".";
 		}
 		return prod2str;
 	}
-	
+
 	/**
 	 * 
 	 * @return <int> Pack size.
@@ -127,4 +130,5 @@ public class Pack extends Vendible {
 		identificador=Integer.toString(id_pack);
 		id_pack++;
 	}
+	
 }

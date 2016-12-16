@@ -33,18 +33,15 @@ public class Producto extends Vendible {
 	 *
 	 * @throws IllegalArgumentException
 	 *			   String name cannot be empty.
-	 *             Code length must be 12
+	 *             @see setIdentificador() Code length must be 12
 	 *             PVP must be positive
 	 */
 	public Producto(String code, String nombre, double pvp) throws IllegalArgumentException {
 		if (nombre.length() == 0) {
 			throw new IllegalArgumentException("Inserte un nombre para el producto.");
 		}
-		if (code.length() != 12) {
-			throw new IllegalArgumentException("El codigo debe ser de 12 digitos.");
-		}
 		if (pvp < 0) {
-			throw new IllegalArgumentException("El precio no puede ser negativo.");
+			throw new IllegalArgumentException("El precio puede ser 0 pero no negativo.");
 		}
 
 		setIdentificador(code);
@@ -62,9 +59,8 @@ public class Producto extends Vendible {
 	 * 				
 	 */
 	private void setIdentificador(String code) throws IllegalArgumentException {
-
 		if (code.length() != 12) {
-			throw new IllegalArgumentException("El codigo debe ser de 12 digitos.");
+			throw new IllegalArgumentException("El codigo UPC debe ser de 12 digitos.");
 		}
 		for(int i=0;i<12;i++){
 			if(code.charAt(i)<48 || code.charAt(i)>57){
