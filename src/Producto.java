@@ -13,7 +13,7 @@ public class Producto extends Vendible {
 	// IMPLEMENTADO DEBIDO A VENDIBLE
 	
 	/**
-	 * @return <String> Product price.
+	 * @return [String] Product price.
 	 */
 	@Override 
 	public double getPVP() {
@@ -25,15 +25,15 @@ public class Producto extends Vendible {
 	/**
 	 * 
 	 * @param code:
-	 *            <String> Product UPC code.
+	 *            [String] Product UPC code.
 	 * @param nombre:
-	 *            <String> Product name.
+	 *            [String] Product name.
 	 * @param pvp:
-	 *            <double> Product price.
+	 *            [double] Product price.
 	 *
 	 * @throws IllegalArgumentException
 	 *			   String name cannot be empty.
-	 *             @see setIdentificador() Code length must be 12
+	 *             setIdentificador() Code length must be 12
 	 *             PVP must be positive
 	 */
 	public Producto(String code, String nombre, double pvp) throws IllegalArgumentException {
@@ -53,7 +53,7 @@ public class Producto extends Vendible {
 	 * Function checks and sets UPC code.
 	 * 
 	 * @param code:
-	 *            <String> UPC code.
+	 *            [String] UPC code.
 	 * @throws IllegalArgumentException
 	 *             Code must be 12 digits and numbers.
 	 * 				
@@ -86,7 +86,7 @@ public class Producto extends Vendible {
 	 * Change product price
 	 * 
 	 * @param pvp
-	 *			<int> new product price
+	 *			[int] new product price
 	 * @throws IllegalArgumentException
 	 *			Price must be positive.
 	 */

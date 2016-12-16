@@ -14,7 +14,7 @@ public class Pack extends Vendible {
 	// IMPLEMENTADO DEBIDO A VENDIBLE.
 	
 	/**
-	 * @return <double> price.
+	 * @return [double] price.
 	 */
 	@Override
 	public double getPVP() {
@@ -31,11 +31,9 @@ public class Pack extends Vendible {
 	/**
 	 * 
 	 * @param name:
-	 * 				<String> Pack name.
-	 * @param identificador:
-	 * 				<String> Pack identification.
+	 * 				[String] Pack name.
 	 * @param lista_pack:
-	 * 				<Producto[]> Pack initial product.
+	 * 				[Producto[]] Pack initial product.
 	 */
 	public Pack(String name, Producto[] lista_pack) throws IllegalArgumentException {
 		if (lista_pack.length<2) throw new IllegalArgumentException ("El pack debe tener 2 o mas productos.\n");
@@ -48,7 +46,7 @@ public class Pack extends Vendible {
 	/**
 	 * 
 	 * @param p:
-	 * 			<Producto[]> Product list to add.
+	 * 			[Producto[]] Product list to add.
 	 */
 	public void add (Producto[] p ) throws IllegalArgumentException{
 		if (p.length == 0) throw new IllegalArgumentException("No se ha añadido ningun producto.");
@@ -60,7 +58,7 @@ public class Pack extends Vendible {
 	/**
 	 * 
 	 * @param p:
-	 * 			<Producto> Product to add at pack. 
+	 * 			[Producto] Product to add at pack. 
 	 * @throws IllegalArgumentException
 	 * 			The product p can not be two times in the pack.
 	 */
@@ -71,7 +69,7 @@ public class Pack extends Vendible {
 
 	/**
 	 * 
-	 * @return <String> Pack products list.
+	 * @return [String] Pack products list.
 	 */
 	public String getProductosDelPack() {
 		String prod2str = "";
@@ -84,7 +82,7 @@ public class Pack extends Vendible {
 
 	/**
 	 * 
-	 * @return <int> Pack size.
+	 * @return [int] Pack size.
 	 */
 	public int size() {
 		return pack.size();
@@ -93,8 +91,8 @@ public class Pack extends Vendible {
 	/**
 	 * 
 	 * @param producto:
-	 * 				<Producto> Product that we want to know if is in the pack.
-	 * @return <boolean> True = producto is in the pack.
+	 * 				[Producto] Product that we want to know if is in the pack.
+	 * @return [boolean] True = producto is in the pack.
 	 */
 	public boolean contains(Producto producto) {
 		// for (int p=0; p<pack.size(); p++){
@@ -108,9 +106,9 @@ public class Pack extends Vendible {
 	/**
 	 *  
 	 * @param producto:
-	 * 				<Producto> Product to remove.
+	 * 				[Producto] Product to remove.
 	 * @throws IllegalArgumentException
-	 * 				Pack must be 2 or more products.
+	 * 				Pack must have 2 or more products.
 	 * 
 	 */
 	public void remove(Producto producto)throws IllegalArgumentException {

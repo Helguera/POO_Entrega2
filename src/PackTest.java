@@ -21,12 +21,13 @@ public class PackTest {
 
 	/* ------------- VALIDO ------------------*/
 	
+	/**
+	 * La inicializacion valida debe ser mediante un array de Productos, no
+	 * pudiendo haber dos iguales en el mismo pack.
+	 */
 	@Test
 	public void testInicializacion_Valido() {
-		/**
-		 * La inicializacion valida debe ser mediante un array de Productos, no
-		 * pudiendo haber dos iguales en el mismo pack.
-		 */
+
 		Pack pck1 = new Pack("P", lista1);
 		assertEquals(pck1.getIdentificador(), "43");
 		assertEquals(pck1.getNombre(), "P");
@@ -35,12 +36,15 @@ public class PackTest {
 
 	}
 
+	/**
+	 * 
+	 * Test sobre la posibilidad de añadir una lista de productos 
+	 * a un pack  ya creado.
+	 * 
+	 */
 	@Test
 	public void test_AddLista_Valido() {
-		/**
-		 * Test sobre la posibilidad de añadir una lista de productos a un pack
-		 * ya creado.
-		 */
+
 		Pack pck2 = new Pack("Come y Bebe", lista1);
 		Producto[] lista = {pro4};
 		
@@ -57,12 +61,12 @@ public class PackTest {
 		assertEquals(pck2.getProductosDelPack(), "Producto1 + Producto2 + Producto4.");
 	}
 
+	/**
+	 * 
+	 * Test sobre la posibilidad de añadir un solo producto a un pack ya creado.
+	 */
 	@Test
 	public void test_AddProducto_Valido() {
-		/**
-		 * Test sobre la posibilidad de añadir una lista de productos a un pack
-		 * ya creado.
-		 */
 		Pack pck3 = new Pack("C", lista1);
 		assertEquals(pck3.size(), 2);
 
@@ -73,12 +77,13 @@ public class PackTest {
 		assertEquals(pck3.getProductosDelPack(), "Producto1 + Producto2 + Producto3.");
 	}
 
+	/**
+	 * 
+	 * Test sobre la posibilidad de eliminar un producto de un pack de 3 o más.
+	 * 
+	 */
 	@Test
 	public void test_Remove_HabiendoProducto_Valido() {
-		/**
-		 * En caso de haber solo 2 productos, y eliminar uno, salta excepcion,
-		 * por eso introducimos 3.
-		 */
 		Pack pck4 = new Pack("R", lista1);
 
 		pck4.add(pro3);
@@ -91,12 +96,13 @@ public class PackTest {
 
 	}
 
+	/**
+	 * 
+	 * En caso de que se quiera eliminar un producto que no está en el pack, no pasa nada.
+	 * 
+	 */
 	@Test
 	public void test_Remove_ProductoQueNoHay() {
-		/**
-		 * En caso de que se pida eliminar un producto que no hay, no se
-		 * eliminara nada.
-		 */
 		Pack pck5 = new Pack("r", lista1);
 		assertEquals(pck5.size(), 2);
 		assertEquals(pck5.getProductosDelPack(), "Producto1 + Producto2.");
@@ -108,30 +114,43 @@ public class PackTest {
 
 	/* ----------- NO VALIDO -----------------*/
 	
+	/**
+	 * 
+	 * El pack debe tener algún nombre.
+	 * 
+	 */
 	@Test (expected = IllegalArgumentException.class)
 	public void test_Inicializacion_NombreNoValido(){
 		Pack p1 = new Pack ("", lista1);
 	}
 	
+	/**
+	 * 
+	 * Un pack no existirá si no tiene como minimo 2 productos.
+	 * 
+	 */
 	@Test (expected = IllegalArgumentException.class)
 	public void test_Inicializacion_UnProducto_NoValido(){
-		/**
-		 * Debe iniciarse con una lista de minimo 2 productos.
-		 */
 		Producto [] unico_producto = {pro1}; 
 		Pack p1 = new Pack ("p", unico_producto);
 	}
 	
+	/**
+	 * 
+	 * En el pack no puede haber dos veces el mismo producto.
+	 */
 	@Test (expected = IllegalArgumentException.class)
 	public void test_AddLista_HayProductoRepetido_NoValida(){
-		/**
-		 * En el pack no puede estar dos veces el mismo producto.
-		 */
+
 		Producto[] lista = {pro1};
 		Pack p1 = new Pack ("p", lista1);
 		p1.add(lista);
 	}
-	
+
+	/**
+	 * 
+	 * No se puede insertar una lista vacía al pack.
+	 */
 	@Test (expected = IllegalArgumentException.class)
 	public void test_AddListaVacia_NoValida(){
 		Pack p1 = new Pack ("0", lista1);
@@ -139,22 +158,27 @@ public class PackTest {
 		p1.add(lista);
 	}
 	
+	/**
+	 * 
+	 * No puede haber un producto repetido en el pack.
+	 * 
+	 */
 	@Test (expected = IllegalArgumentException.class)
 	public void test_AddProducto_HayProductoRepetido_NoValido(){
-		/**
-		 * En el pack no puede estar dos veces el mismo producto.
-		 */
 		Pack p1 = new Pack ("p", lista1);
 		p1.add(pro1);
 	}
 	
+	/**
+	 * 
+	 * En el caso de eliminar un producto de un pack que solo tenía dos,
+	 * se lanza la excepción debido a que no puede existir un pack de menos
+	 * de dos productos.
+	 * 
+	 */
 	@Test (expected = IllegalArgumentException.class)
 	public void test_Remove_PackDeDosProductos_NoValido(){
-		/**
-		 * Teniendo un pack de 2 productos, si se elimina uno,
-		 * salta excepción, ya que no se puede tener packs de
-		 * menos de 2 productos. 
-		 **/
+
 		Pack p1 = new Pack ("p", lista1);
 		p1.remove(pro1);
 	}

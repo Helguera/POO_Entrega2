@@ -6,7 +6,12 @@ import org.junit.Test;
 
 public class VendiblePolimorficoTest {
 
-
+	/**
+	 * 
+	 * Creación de Productos y packs con una instancia de Vendible.
+	 * Luego pueden ser casteados.
+	 * 
+	 */
 	@Test
 	public void test_Creacion_Polimorfica(){
 		Vendible vProd1 = new Producto("111111111117", "Vendible1", 0.35);
@@ -15,6 +20,14 @@ public class VendiblePolimorficoTest {
 		Vendible vPack = new Pack ("Vendible3", lista);
 	}
 
+	/**
+	 * 
+	 * Se comprobará la utilidad del polimorfismo apra almmacenar dos objetos
+	 * que en un principio son de distinto tipo pero heredan de la misma clase
+	 * abstracta, de modo que al compartir métodos polimorficos, pueden ser usados
+	 * independientemente del tipo que sea.
+	 * 
+	 */
 	@Test
 	public void test_Uso_Polimorfismo(){
 		

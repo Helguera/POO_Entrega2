@@ -24,8 +24,7 @@ public class ProductoTest {
 	
 	/*---------- INICIALIZACION NO VALIDA ---------- */
 	
-	// Por el codigo UPC:
-	
+
 	@Test (expected = IllegalArgumentException.class)
 	public void testInicializacioNoValido_CodeAlPrincipio(){
 		Producto p = new Producto ("/6666666666", "Pringles", 0.35);

@@ -14,7 +14,7 @@ public abstract class Vendible {
 	
 	/**
 	 * 
-	 * @return <String> Name
+	 * @return [String] Name
 	 */
 	String getNombre(){
 		return nombre;
@@ -22,7 +22,7 @@ public abstract class Vendible {
 	
 	/**
 	 * 
-	 * @return <String> ID
+	 * @return [String] ID
 	 */
 	String getIdentificador(){
 		return identificador;
@@ -30,7 +30,7 @@ public abstract class Vendible {
 	
 	/**
 	 * 
-	 * @return <double> Price
+	 * @return [double] Price
 	 */
 	abstract double getPVP();
 
